@@ -64,9 +64,80 @@ This ASIC must be integrated with the following external components:
 ## Project Status
 
 **Current Stage:** Project Setup  
-**Completion:** 10%
+**Completion:** 15%
 
-See [docs/README.md](docs/README.md) for detailed documentation.
+## 📋 Complete Documentation
+
+### **[📘 SYSTEM DATASHEET - START HERE](docs/SYSTEM_DATASHEET.md)**
+
+This comprehensive 54-page technical datasheet is designed for outsourcing to an engineering house. It includes:
+
+#### **Detailed Power Budget Analysis with Calculations**
+- Battery capacity analysis (CR2032: 220 mAh → 151 mAh usable after derating)
+- Operating mode breakdown with duty cycles
+- Current consumption for every component in every mode
+- **Three scenarios analyzed:**
+  - Worst-case: 104 µA (2 months life) ❌
+  - Optimized: 43 µA (4.8 months life) ⚠️
+  - Motion-gated: 16.4 µA (12.8 months life) ✅
+- Justification for every design decision
+
+#### **Complete Audio ADC Specification**
+- Why custom ADC is required (no commercial parts meet ≤500µA @ 16kHz)
+- Sample rate selection: Why 16 kHz (pig vocalization analysis)
+- Resolution selection: Why 12-14 bit (50 dB dynamic range requirement)
+- Sigma-delta architecture specification
+- Full Statement of Work for analog design house
+- $200k NRE budget with milestone-based payments
+
+#### **System Architecture**
+- Block diagrams showing all external components
+- Signal flow diagrams for audio, temperature, activity paths
+- Interface specifications (I2S, I2C, SPI, UART, GPIO)
+- Pin assignments for Caravel integration
+
+#### **Environmental & Mechanical Specs**
+- Form factor: 25×25×8 mm, <10g with battery
+- IP67 enclosure (dust-tight, water-immersive)
+- Operating temperature: -10°C to +50°C
+- Mounting on pig ear (industry-standard snap-through tag)
+- Durability testing (drop, vibration, UV, water immersion)
+
+#### **Wireless Link Budget**
+- nRF24L01+ at 2.4 GHz, 0 dBm (1 mW)
+- Path loss calculation for 100m range
+- +1 dB link margin (tight but acceptable)
+- Packet format (32 bytes: device ID, timestamp, events, sensor data)
+
+#### **Health Monitoring Vitals**
+- **Acoustic:** Cough detection (500Hz-4kHz, 0.2-0.5s duration)
+- **Temperature:** Continuous fever monitoring (>40°C alert)
+- **Activity:** Accelerometer-based lethargy detection
+- **Correlation:** Multi-parameter health scoring
+
+#### **Complete Bill of Materials**
+- $14.50 per unit at 100k volume
+- Cost reduction path to <$12 at 500k volume
+- Detailed component selection with alternates
+
+#### **Testing & Validation Plan**
+- Component characterization procedures
+- System integration testing (benchtop + environmental)
+- Field trial protocol (pilot + 6-month validation study)
+- Success criteria: >80% cough detection accuracy, <10% false positives
+
+#### **Risk Analysis & Mitigation**
+- Technical risks (ADC power, detection accuracy, battery life)
+- Schedule risks (12-month ADC design, 6-month field trials)
+- Cost risks (NRE overruns, component shortages)
+
+#### **30-Month Project Timeline**
+- Phase 1 (Months 1-12): Design & prototyping
+- Phase 2 (Months 13-18): Verification & testing
+- Phase 3 (Months 19-24): Field trials
+- Phase 4 (Months 25-30): Production ramp
+
+See [docs/SYSTEM_DATASHEET.md](docs/SYSTEM_DATASHEET.md) for the complete specification.
 
 ## Quick Start
 
